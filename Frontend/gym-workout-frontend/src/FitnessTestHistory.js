@@ -26,13 +26,13 @@ const FitnessTestHistory = () => {
     { value: 'exercises.flexibility.sit_and_touch_cm', label: 'Sit and Touch (cm)' },
     { value: 'exercises.flexibility.shoulder_stretch_cm', label: 'Shoulder Stretch (cm)' },
     { value: 'exercises.flexibility.hamstring_stretch_cm', label: 'Hamstring Stretch (cm)' },
-    { value: 'exercises.cardio_endurance.ten_min_run_bpm', label: '10-min Run BPM' },
+    { value: 'exercises.cardio_endurance.ten_min_run_bpm', label: '01-min Run BPM' },
     { value: 'exercises.cardio_endurance.ten_min_cycle_bpm', label: '10-min Cycle BPM' },
     { value: 'physical_data.weight_kg', label: 'Weight (kg)' },
     { value: 'physical_data.height.feet', label: 'Height (Feet)' },
     { value: 'physical_data.height.inches', label: 'Height (Inches)' },
-    { value: 'physical_data.bpm_before_test', label: 'BPM Before Test' },
-    { value: 'physical_data.bpm_after_test', label: 'BPM After Test' },
+    { value: 'physical_data.bpm_before_test', label: 'BPM At Rest' },
+    { value: 'physical_data.bpm_after_test', label: 'MHR' },
   ];
 
   // Fetch fitness tests for entered phone_no
@@ -233,7 +233,7 @@ const FitnessTestHistory = () => {
                             {/* Cardio Endurance */}
                             <div>
                               <h3 className="font-semibold">Cardio Endurance</h3>
-                              <p>10-min Run: {test.exercises.cardio_endurance.ten_min_run_bpm} bpm</p>
+                              <p>1-min Run: {test.exercises.cardio_endurance.ten_min_run_bpm} bpm</p>
                               <p>10-min Cycle: {test.exercises.cardio_endurance.ten_min_cycle_bpm} bpm</p>
                             </div>
                             {/* Physical Data */}
@@ -241,8 +241,8 @@ const FitnessTestHistory = () => {
                               <h3 className="font-semibold">Physical Data</h3>
                               <p>Weight: {test.physical_data.weight_kg} kg</p>
                               <p>Height: {test.physical_data.height.feet} ft {test.physical_data.height.inches} in</p>
-                              <p>BPM Before: {test.physical_data.bpm_before_test} bpm</p>
-                              <p>BPM After: {test.physical_data.bpm_after_test} bpm</p>
+                              <p>BPM At Rest: {test.physical_data.bpm_before_test} bpm</p>
+                              <p>MHR: {test.physical_data.bpm_after_test} bpm</p>
                             </div>
                           </div>
                         </td>
