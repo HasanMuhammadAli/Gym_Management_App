@@ -233,7 +233,7 @@ const FitnessTestHistory = () => {
                             {/* Cardio Endurance */}
                             <div>
                               <h3 className="font-semibold">Cardio Endurance</h3>
-                              <p>1-min Run: {test.exercises.cardio_endurance.ten_min_run_bpm} bpm</p>
+                              <p>01-min Run: {test.exercises.cardio_endurance.ten_min_run_bpm} bpm</p>
                               <p>10-min Cycle: {test.exercises.cardio_endurance.ten_min_cycle_bpm} bpm</p>
                             </div>
                             {/* Physical Data */}
@@ -241,6 +241,9 @@ const FitnessTestHistory = () => {
                               <h3 className="font-semibold">Physical Data</h3>
                               <p>Weight: {test.physical_data.weight_kg} kg</p>
                               <p>Height: {test.physical_data.height.feet} ft {test.physical_data.height.inches} in</p>
+                              {typeof test.physical_data.bmi !== 'undefined' && (
+                                <p>BMI: {test.physical_data.bmi}</p>
+                              )}
                               <p>BPM At Rest: {test.physical_data.bpm_before_test} bpm</p>
                               <p>MHR: {test.physical_data.bpm_after_test} bpm</p>
                             </div>

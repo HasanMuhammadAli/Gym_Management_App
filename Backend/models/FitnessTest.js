@@ -60,7 +60,7 @@ const FitnessTestSchema = new Schema({
         type: Number,
         required: true,
         min: 0,
-        description: 'Heart rate after 10-minute run in beats per minute'
+        description: 'Heart rate after 01-minute run in beats per minute'
       },
       ten_min_cycle_bpm: {
         type: Number,
@@ -96,13 +96,13 @@ const FitnessTestSchema = new Schema({
       type: Number,
       required: true,
       min: 0,
-      description: 'Heart rate before test in beats per minute'
+      description: 'BPM At Rest (before test)'
     },
     bpm_after_test: {
       type: Number,
       required: true,
       min: 0,
-      description: 'Heart rate after test in beats per minute'
+      description: 'MHR (after test)'
     }
   }
 }, {

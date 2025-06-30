@@ -273,7 +273,7 @@ const FitnessTest = () => {
             <h2 className="text-lg font-semibold text-gray-700 mb-3">Cardio Endurance Test</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-gray-600 mb-1">1-min Run (bpm)</label>
+                <label className="block text-gray-600 mb-1">01-min Run (bpm)</label>
                 <input
                   type="number"
                   name="ten_min_run_bpm"
@@ -343,7 +343,7 @@ const FitnessTest = () => {
                 </div>
               </div>
               <div>
-                <label className="block text-gray-600 mb-1">BPM During Rest</label>
+                <label className="block text-gray-600 mb-1">BPM At Rest</label>
                 <input
                   type="number"
                   name="bpm_before_test"
@@ -355,7 +355,7 @@ const FitnessTest = () => {
                 />
               </div>
               <div>
-                <label className="block text-gray-600 mb-1">MHR(max bpm)</label>
+                <label className="block text-gray-600 mb-1">MHR (max bpm)</label>
                 <input
                   type="number"
                   name="bpm_after_test"
