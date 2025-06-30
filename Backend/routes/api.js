@@ -307,6 +307,16 @@ router.get('/users', async (req, res) => {
 // Creates a new fitness test record
 router.post('/fitness-test', async (req, res) => {
   try {
+    // Calculate BMI
+    const { weight_kg, height } = req.body.physical_data;
+    const totalInches = (Number(height.feet) * 12) + Number(height.inches);
+    const heightMeters = totalInches * 0.0254;
+    let bmi = null;
+    if (weight_kg && heightMeters) {
+      bmi = weight_kg / (heightMeters * heightMeters);
+      bmi = Math.round(bmi * 100) / 100; // round to 2 decimals
+    }
+    req.body.physical_data.bmi = bmi;
     const fitnessTest = new FitnessTest(req.body);
     const savedTest = await fitnessTest.save();
     res.status(201).json(savedTest);

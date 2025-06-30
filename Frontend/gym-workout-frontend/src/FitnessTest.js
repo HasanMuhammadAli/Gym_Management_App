@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const initialExercises = {
   strength: { pushup_reps: '', squats_reps: '', pull_ups_reps: '' },
@@ -10,7 +10,8 @@ const initialPhysicalData = {
   weight_kg: '',
   height: { feet: '', inches: '' },
   bpm_before_test: '',
-  bpm_after_test: ''
+  bpm_after_test: '',
+  bmi: ''
 };
 
 const FitnessTest = () => {
@@ -19,6 +20,26 @@ const FitnessTest = () => {
   const [goal, setGoal] = useState('');
   const [exercises, setExercises] = useState(initialExercises);
   const [physicalData, setPhysicalData] = useState(initialPhysicalData);
+
+  // Calculate BMI whenever weight or height changes
+  useEffect(() => {
+    const { weight_kg, height } = physicalData;
+    const feet = Number(height.feet);
+    const inches = Number(height.inches);
+    const weight = Number(weight_kg);
+    if (feet > 0 || inches > 0) {
+      const totalInches = (feet * 12) + inches;
+      const heightMeters = totalInches * 0.0254;
+      if (weight > 0 && heightMeters > 0) {
+        const bmi = weight / (heightMeters * heightMeters);
+        setPhysicalData(prev => ({ ...prev, bmi: (bmi ? bmi.toFixed(2) : '') }));
+      } else {
+        setPhysicalData(prev => ({ ...prev, bmi: '' }));
+      }
+    } else {
+      setPhysicalData(prev => ({ ...prev, bmi: '' }));
+    }
+  }, [physicalData.weight_kg, physicalData.height.feet, physicalData.height.inches]);
 
   const handleExerciseChange = (e, category) => {
     const { name, value } = e.target;
@@ -125,7 +146,8 @@ const FitnessTest = () => {
             inches: Number(physicalData.height.inches)
           },
           bpm_before_test: Number(physicalData.bpm_before_test),
-          bpm_after_test: Number(physicalData.bpm_after_test)
+          bpm_after_test: Number(physicalData.bpm_after_test),
+          bmi: physicalData.bmi ? Number(physicalData.bmi) : undefined
         }
       };
 
@@ -364,6 +386,17 @@ const FitnessTest = () => {
                   className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                   min="0"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-600 mb-1">BMI (auto-calculated)</label>
+                <input
+                  type="text"
+                  name="bmi"
+                  value={physicalData.bmi}
+                  readOnly
+                  className="w-full p-2 border border-gray-300 rounded-md bg-gray-100 text-gray-700"
+                  tabIndex="-1"
                 />
               </div>
             </div>

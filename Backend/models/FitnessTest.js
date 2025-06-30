@@ -102,7 +102,13 @@ const FitnessTestSchema = new Schema({
       type: Number,
       required: true,
       min: 0,
-      description: 'MHR (after test)'
+      description: 'MHR (after test)',
+      bmi: {
+        type: Number,
+        required: false,
+        min: 0,
+        description: 'Body Mass Index (BMI) calculated from weight and height'
+      }
     }
   }
 }, {

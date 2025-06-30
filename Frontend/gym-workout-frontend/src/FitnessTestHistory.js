@@ -33,6 +33,7 @@ const FitnessTestHistory = () => {
     { value: 'physical_data.height.inches', label: 'Height (Inches)' },
     { value: 'physical_data.bpm_before_test', label: 'BPM At Rest' },
     { value: 'physical_data.bpm_after_test', label: 'MHR' },
+    { value: 'physical_data.bmi', label: 'BMI' },
   ];
 
   // Fetch fitness tests for entered phone_no
